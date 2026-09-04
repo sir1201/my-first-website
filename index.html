@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name — Portfolio</title>
+    <title>Precision Mobile Detailing | Modern Auto Care</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --border: #334155;
-            --max-width: 800px;
+            --bg-main: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #090d16;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #f8fafc;
+            --accent-blue: #38bdf8;
+            --accent-blue-soft: #e0f2fe;
+            --border-color: #e2e8f0;
+            --border-dark: #1e293b;
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --max-width: 1200px;
         }
 
         * {
@@ -25,505 +31,544 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        header {
-            margin-bottom: 3.5rem;
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .profile-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .profile-subtitle {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .bio {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 600px;
-        }
-
-        section {
-            margin-bottom: 3.5rem;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .tags {
+        .nav-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .links-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .link-item a {
-            color: var(--text-main);
-            text-decoration: none;
-            display: inline-flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-dark);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.2s ease;
         }
 
-        .link-item a:hover {
-            color: var(--accent);
+        .nav-links a:hover {
+            color: var(--text-dark);
         }
 
-        footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--text-dark);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e293b;
+            transform: translateY(-1px);
+        }
+
+        .btn-blue {
+            background-color: var(--accent-blue);
+            color: var(--text-dark);
+        }
+
+        .btn-blue:hover {
+            background-color: #7dd3fc;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-blue-soft);
+            color: #0284c7;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.25rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 span {
+            color: var(--accent-blue);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            font-size: 0.875rem;
-            text-align: center;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
         }
-    </style>
-</head>
-<body>
 
-    <div class="container">
-        <header>
-            <h1 class="profile-title">Your Name</h1>
-            <p class="profile-subtitle">Software Engineer & Designer</p>
-            <p class="bio">
-                Building thoughtful digital experiences. Passionate about clean code, intuitive design, and open-source software.
-            </p>
-        </header>
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-        <section id="projects">
-            <h2 class="section-title">Selected Projects</h2>
-            <div class="projects-grid">
-                <div class="card">
-                    <h3 class="card-title">Project Alpha</h3>
-                    <p class="card-desc">A minimal task management tool built for speed and focus.</p>
-                    <div class="tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">HTML/CSS</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Project Beta</h3>
-                    <p class="card-desc">Real-time data visualization dashboard for tracking personal metrics.</p>
-                    <div class="tags">
-                        <span class="tag">API</span>
-                        <span class="tag">Charts</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        /* Stats Section */
+        .stats {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+        }
 
-        <section id="connect">
-            <h2 class="section-title">Connect</h2>
-            <ul class="links-list">
-                <li class="link-item">
-                    <a href="https://github.com" target="_blank" rel="noopener">
-                        GitHub &rarr;
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener">
-                        LinkedIn &rarr;
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="mailto:your.email@example.com">
-                        Email &rarr;
-                    </a>
-                </li>
-            </ul>
-        </section>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
 
-        <footer>
-            <p>&copy; 2026 Your Name. All rights reserved.</p>
-        </footer>
-    </div>
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
 
-</body>
-</html>            max-width: var(--max-width);
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25 ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            transform: translateY(-4px);
+        }
+
+        .service-card.popular {
+            border: 2px solid var(--accent-blue);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background-color: var(--accent-blue);
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.2rem 0.75rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-blue);
+            border-radius: 50%;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 6rem 0;
+            border-radius: var(--radius-lg);
+            margin-bottom: 6rem;
+        }
+
+        .features-section .section-header p {
+            color: #94a3b8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-box h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .feature-box p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .feature-box .icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(56, 189, 248, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding-bottom: 6rem;
+        }
+
+        .contact-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        header {
-            margin-bottom: 3.5rem;
-        }
-
-        .profile-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .profile-subtitle {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .bio {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 600px;
-        }
-
-        section {
-            margin-bottom: 3.5rem;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .tags {
+        .contact-details {
             display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
             flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
-        .tag {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            font-size: 0.75rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 500;
+        .contact-item {
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
-        .links-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .link-item a {
-            color: var(--text-main);
+        .contact-item a {
+            color: var(--text-dark);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
+            border-bottom: 2px solid var(--accent-blue);
         }
 
-        .link-item a:hover {
-            color: var(--accent);
-        }
-
+        /* Footer */
         footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.875rem;
+            border-top: 1px solid var(--border-color);
+            padding: 2.5rem 0;
             text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1 class="profile-title">Your Name</h1>
-            <p class="profile-subtitle">Software Engineer & Designer</p>
-            <p class="bio">
-                Building thoughtful digital experiences. Passionate about clean code, intuitive design, and open-source software.
-            </p>
-        </header>
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Aura<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Book Now</a>
+        </div>
+    </nav>
 
-        <section id="projects">
-            <h2 class="section-title">Selected Projects</h2>
-            <div class="projects-grid">
-                <div class="card">
-                    <h3 class="card-title">Project Alpha</h3>
-                    <p class="card-desc">A minimal task management tool built for speed and focus.</p>
-                    <div class="tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">HTML/CSS</span>
-                    </div>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="tagline">
+                    <span>•</span> Mobile Detailing Experience
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Project Beta</h3>
-                    <p class="card-desc">Real-time data visualization dashboard for tracking personal metrics.</p>
-                    <div class="tags">
-                        <span class="tag">API</span>
-                        <span class="tag">Charts</span>
+                <h1>Showroom Shine, <span>Delivered</span> To Your Driveway.</h1>
+                <p class="hero-desc">We bring premium, eco-friendly auto detailing right to your home or office. Experience meticulous care with zero hassle.</p>
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-primary">View Packages</a>
+                    <a href="#contact" class="btn btn-blue">Get a Free Quote</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Mobile & Fully Equipped</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Vehicles Detailed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5.0 ★</h3>
+                    <p>Average Customer Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Service Packages</h2>
+                <p>Transparent pricing tailored to your vehicle's needs.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div>
+                        <h3>Essential Maintenance</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Perfect for regular upkeep</p>
+                        <div class="price">$110 <span>/ service</span></div>
+                        <ul class="features-list">
+                            <li>Hand wash & foam bath</li>
+                            <li>Wheel & tire deep clean</li>
+                            <li>Interior vacuum & surface wipe</li>
+                            <li>Glass streak-free finish</li>
+                            <li>Tire dressing application</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%;">Select Package</a>
+                </div>
+
+                <div class="service-card popular">
+                    <span class="popular-badge">Most Popular</span>
+                    <div>
+                        <h3>Signature Detail</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Complete interior & exterior reset</p>
+                        <div class="price">$220 <span>/ service</span></div>
+                        <ul class="features-list">
+                            <li>Everything in Essential</li>
+                            <li>Clay bar paint decontamination</li>
+                            <li>3-month sealant protection</li>
+                            <li>Carpet & seat shampoo extraction</li>
+                            <li>Leather conditioning treatment</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-blue" style="width: 100%;">Select Package</a>
+                </div>
+
+                <div class="service-card">
+                    <div>
+                        <h3>Ultimate Restoration</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Maximum gloss and protection</p>
+                        <div class="price">$380 <span>/ service</span></div>
+                        <ul class="features-list">
+                            <li>Everything in Signature</li>
+                            <li>Single-stage paint correction</li>
+                            <li>1-Year Ceramic Coating protection</li>
+                            <li>Engine bay deep cleaning</li>
+                            <li>Headlight restoration</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%;">Select Package</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="why-us" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: #ffffff;">The Modern Standard</h2>
+                    <p>Designed around your convenience and peace of mind.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="icon">01</div>
+                        <h3>Self-Sufficient Setup</h3>
+                        <p>We bring our own spot-free water tank and ultra-quiet power generator. We need nothing from your home.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon">02</div>
+                        <h3>Eco-Conscious Tech</h3>
+                        <p>We utilize biodegradable, pH-balanced formulas that protect your car’s surfaces and the environment.</p>
+                    </div>
+                    <div class="feature-box">
+                        <div class="icon">03</div>
+                        <h3>Precision Guarantee</h3>
+                        <p>If you spot anything below perfection, we fix it on the spot. No arguments, no extra fees.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="connect">
-            <h2 class="section-title">Connect</h2>
-            <ul class="links-list">
-                <li class="link-item">
-                    <a href="https://github.com" target="_blank" rel="noopener">
-                        GitHub &rarr;
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener">
-                        LinkedIn &rarr;
-                    </a>
-                </li>
-                <li class="link-item">
-                    <a href="mailto:your.email@example.com">
-                        Email &rarr;
-                    </a>
-                </li>
-            </ul>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Your Name. All rights reserved.</p>
-        </footer>
     </div>
 
-</body>
-</html>    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
-</head>
-<body>
-<main>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2>Ready for a pristine ride?</h2>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Book your appointment in less than 2 minutes.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        Call / Text: <a href="tel:5550192834">(555) 019-2834</a>
+                    </div>
+                    <div class="contact-item">
+                        Email: <a href="mailto:hello@auradetail.com">hello@auradetail.com</a>
+                    </div>
+                </div>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+                <a href="tel:5550192834" class="btn btn-blue" style="padding: 1rem 2.5rem; font-size: 1.05rem;">Schedule Your Detail</a>
+            </div>
+        </div>
+    </section>
 
-  <h1>It&rsquo;s live.</h1>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Aura Mobile Detailing. Designed with precision.</p>
+        </div>
+    </footer>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by Savian Ruiz</p>
-
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
-
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        YOUR NAME HERE above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
-  </div>
-
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
-
-  <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
-  </footer>
-
-</main>
 </body>
 </html>
